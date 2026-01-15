@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Центр Энергоэффективности - Электролаборатория до 110кВ</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        /* Анимации */
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        .slide-up { animation: slideUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        
+        /* Стили для слайдера (range input) */
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
+            background: #f97316; cursor: pointer; margin-top: -8px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer; background: #e2e8f0; border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-white/10 transition-all">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">ЦЭ</span>
+                    </div>
+                    <div>
+                        <h1 class="text-white font-bold text-base leading-tight">Центр<br>Энергоэффективности</h1>
+                    </div>
+                </div>
+                
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#services" class="text-slate-300 hover:text-white transition-colors text-sm">Услуги</a>
+                    <a href="#about" class="text-slate-300 hover:text-white transition-colors text-sm">О компании</a>
+                    <a href="#projects" class="text-slate-300 hover:text-white transition-colors text-sm">Проекты</a>
+                    <a href="#contacts" class="text-slate-300 hover:text-white transition-colors text-sm">Контакты</a>
+                </nav>
+
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="tel:89302460077" class="text-white font-bold hover:text-orange-400 transition-colors">8-930-246-00-77</a>
+                    <button onclick="document.getElementById('contacts').scrollIntoView()" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center text-sm transition-all">
+                        <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                        Заказать звонок
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen pt-24 flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-up">
+                    <div class="inline-flex items-center bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full px-3 py-1 mb-6 text-sm">
+                        <i data-lucide="shield" class="w-3 h-3 mr-2"></i>
+                        Лицензированная электролаборатория
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                        Электромонтаж и обслуживание 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">до 110кВ</span>
+                    </h2>
+                    <p class="text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
+                        Строительство подстанций, монтаж кабельных линий, испытания и наладка оборудования. Работаем по всей России с 2010 года.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <div class="flex items-center gap-2 text-slate-300"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Собственная лаборатория</span></div>
+                        <div class="flex items-center gap-2 text-slate-300"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Аттестованный персонал</span></div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="openCalculator()" class="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-3 rounded-lg flex items-center transition-all shadow-lg shadow-orange-500/25">
+                            <i data-lucide="calculator" class="w-5 h-5 mr-2"></i>
+                            Рассчитать стоимость
+                        </button>
+                        <a href="#projects" class="border border-slate-600 text-white hover:bg-slate-800 text-lg px-8 py-3 rounded-lg transition-all flex items-center">
+                            Наши проекты
+                        </a>
+                    </div>
+                </div>
+                <div class="slide-up delay-200">
+                    <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Получите расчёт стоимости</h3>
+                            <p class="text-slate-400">Ответим в течение 30 минут</p>
+                        </div>
+                        <form onsubmit="handleHeroSubmit(event)" class="space-y-4">
+                            <input type="text" placeholder="Ваше имя" required class="w-full bg-white/10 border border-white/20 text-white placeholder:text-slate-400 h-12 px-4 rounded-lg focus:outline-none focus:border-orange-500 transition-colors">
+                            <input type="tel" placeholder="Телефон" required class="w-full bg-white/10 border border-white/20 text-white placeholder:text-slate-400 h-12 px-4 rounded-lg focus:outline-none focus:border-orange-500 transition-colors">
+                            <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white h-12 text-lg rounded-lg font-medium transition-all shadow-lg shadow-orange-500/25">Получить расчёт</button>
+                            <p class="text-center text-slate-500 text-xs">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="slide-up">
+                    <span class="text-orange-500 font-semibold text-sm uppercase tracking-wider">О компании</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6">
+                        Центр Энергоэффективности — надёжность, проверенная временем
+                    </h2>
+                    <div class="space-y-4 text-slate-300 text-lg leading-relaxed">
+                        <p>
+                            Мы специализируемся на комплексном выполнении электромонтажных работ, испытаниях и обслуживании электрооборудования напряжением до 110 кВ. 
+                        </p>
+                        <p>
+                            Наша электролаборатория зарегистрирована в органах Ростехнадзора и укомплектована современным измерительным оборудованием ведущих мировых производителей. [cite: 519-520]
+                        </p>
+                        <p>
+                            Работаем с промышленными предприятиями, энергосбытовыми компаниями, застройщиками и управляющими компаниями по всей России. [cite: 520-521]
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 slide-up delay-200">
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-2">14+</div>
+                        <div class="text-white font-semibold text-lg mb-1">Лет на рынке</div>
+                        <div class="text-slate-400 text-sm">Работаем с 2010 года</div>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-2">500+</div>
+                        <div class="text-white font-semibold text-lg mb-1">Проектов</div>
+                        <div class="text-slate-400 text-sm">Успешно завершено</div>
+                    </div>
+
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-2">150+</div>
+                        <div class="text-white font-semibold text-lg mb-1">Клиентов</div>
+                        <div class="text-slate-400 text-sm">Доверяют нам</div>
+                    </div>
+
+                    <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+                        <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 mb-2">24/7</div>
+                        <div class="text-white font-semibold text-lg mb-1">Аварийная служба</div>
+                        <div class="text-slate-400 text-sm">Всегда на связи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 slide-up">
+                <span class="text-orange-500 font-semibold text-sm uppercase tracking-wider">Почему выбирают нас</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-4">Надёжный партнёр в энергетике</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 hover:border-orange-200 hover:shadow-xl transition-all group slide-up">
+                    <div class="w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><i data-lucide="shield" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Лицензированная лаборатория</h3>
+                    <p class="text-slate-600">Регистрация в Ростехнадзоре, право испытаний до 110кВ</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 hover:border-orange-200 hover:shadow-xl transition-all group slide-up delay-100">
+                    <div class="w-14 h-14 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><i data-lucide="award" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Опыт более 14 лет</h3>
+                    <p class="text-slate-600">Работаем с 2010 года. Более 500 проектов.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 hover:border-orange-200 hover:shadow-xl transition-all group slide-up delay-200">
+                    <div class="w-14 h-14 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><i data-lucide="users" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Аттестованный персонал</h3>
+                    <p class="text-slate-600">Все специалисты имеют допуск к работам</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 hover:border-orange-200 hover:shadow-xl transition-all group slide-up">
+                    <div class="w-14 h-14 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><i data-lucide="wrench" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Современное оборудование</h3>
+                    <p class="text-slate-600">Сертифицированные приборы ведущих брендов</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 hover:border-orange-200 hover:shadow-xl transition-all group slide-up delay-100">
+                    <div class="w-14 h-14 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><i data-lucide="clock" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Соблюдение сроков</h3>
+                    <p class="text-slate-600">Штрафные санкции при задержке в договоре</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 hover:border-orange-200 hover:shadow-xl transition-all group slide-up delay-200">
+                    <div class="w-14 h-14 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"><i data-lucide="file-check" class="w-7 h-7"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Полный пакет документов</h3>
+                    <p class="text-slate-600">Технические отчеты, протоколы, акты</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 slide-up">
+                <span class="text-orange-500 font-semibold text-sm uppercase tracking-wider">Наши услуги</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-4">Полный спектр работ</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500 slide-up">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-slate-900/60"></div>
+                        <div class="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">Популярное</div>
+                        <div class="absolute bottom-4 left-6">
+                            <h3 class="text-2xl font-bold text-white">Электролаборатория 110кВ</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-600 mb-4">Комплексные испытания электрооборудования, наладка релейной защиты.</p>
+                        <ul class="grid grid-cols-2 gap-2 mb-6 text-sm text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-500"></i>Испытания до 110кВ</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-500"></i>Наладка РЗиА</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-3xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500 slide-up delay-100">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-slate-900/60"></div>
+                        <div class="absolute bottom-4 left-6">
+                            <h3 class="text-2xl font-bold text-white">Монтажные работы</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-600 mb-4">Строительство подстанций, прокладка кабельных линий и воздушных ЛЭП.</p>
+                        <ul class="grid grid-cols-2 gap-2 mb-6 text-sm text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i>Строительство ПС</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i>Монтаж КЛ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 slide-up">
+                <span class="text-orange-500 font-semibold text-sm uppercase tracking-wider">Портфолио</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-4">Реализованные проекты</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group slide-up">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded">Строительство</div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 p-6">
+                            <h3 class="text-xl font-bold text-white">ПС 110/10 кВ "Промышленная"</h3>
+                            <p class="text-slate-300 text-sm">Московская область, 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group slide-up delay-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded">КЛ 10кВ</div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 p-6">
+                            <h3 class="text-xl font-bold text-white">ЖК "Новый город"</h3>
+                            <p class="text-slate-300 text-sm">Владимирская область, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 slide-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Лицензии и сертификаты</h2>
+            </div>
+            <div class="flex flex-wrap justify-center gap-2 mb-10 slide-up">
+                <button onclick="filterLicenses('all')" class="px-4 py-2 rounded-lg bg-orange-500 text-white text-sm font-medium hover:bg-orange-600 transition-colors">Все документы</button>
+                <button onclick="filterLicenses('lab')" class="px-4 py-2 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-50 transition-colors">Лаборатория</button>
+                <button onclick="filterLicenses('construction')" class="px-4 py-2 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-50 transition-colors">Строительство</button>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6" id="licenses-grid">
+                <div class="license-card group cursor-pointer" data-category="lab" onclick="alert('Здесь открывается просмотр лицензии')">
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 h-48 relative">
+                        <img src="https://images.unsplash.com/photo-1568057373547-ac4f9e8a9b73?w=800" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/30 transition-opacity">
+                            <i data-lucide="zoom-in" class="text-white w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <p class="mt-2 font-bold text-slate-900 text-center">Свидетельство ЭТЛ</p>
+                </div>
+                <div class="license-card group cursor-pointer" data-category="construction" onclick="alert('Здесь открывается просмотр лицензии')">
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 h-48 relative">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/30 transition-opacity">
+                            <i data-lucide="zoom-in" class="text-white w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <p class="mt-2 font-bold text-slate-900 text-center">Лицензия Минстрой</p>
+                </div>
+                <div class="license-card group cursor-pointer" data-category="design" onclick="alert('Здесь открывается просмотр лицензии')">
+                    <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 h-48 relative">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/30 transition-opacity">
+                            <i data-lucide="zoom-in" class="text-white w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <p class="mt-2 font-bold text-slate-900 text-center">Допуск СРО Проект</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Отзывы клиентов</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div id="review-container" class="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 text-center transition-all duration-300">
+                    </div>
+                
+                <div class="flex justify-center gap-4 mt-8">
+                    <button onclick="prevReview()" class="p-2 rounded-full border border-white/20 hover:bg-white/10"><i data-lucide="chevron-left"></i></button>
+                    <button onclick="nextReview()" class="p-2 rounded-full border border-white/20 hover:bg-white/10"><i data-lucide="chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Свяжитесь с нами</h2>
+                    <div class="grid gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600"><i data-lucide="phone" class="w-6 h-6"></i></div>
+                            <div>
+                                <h3 class="font-bold text-lg">Телефон</h3>
+                                <p class="text-slate-600">8-930-246-00-77</p>
+                                <p class="text-slate-400 text-sm">08:00 - 20:00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600"><i data-lucide="mail" class="w-6 h-6"></i></div>
+                            <div>
+                                <h3 class="font-bold text-lg">Email</h3>
+                                <p class="text-slate-600">investen@bk.ru</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50 p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold mb-6">Оставить заявку</h3>
+                    <form onsubmit="handleMainSubmit(event)" id="mainForm" class="space-y-4">
+                        <input type="text" placeholder="Ваше имя" required class="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-orange-500 outline-none">
+                        <input type="tel" placeholder="Телефон" required class="w-full h-12 px-4 rounded-lg border border-slate-200 focus:border-orange-500 outline-none">
+                        <textarea placeholder="Ваш вопрос" class="w-full h-32 px-4 py-3 rounded-lg border border-slate-200 focus:border-orange-500 outline-none resize-none"></textarea>
+                        <button type="submit" class="w-full bg-orange-500 text-white h-12 rounded-lg font-bold hover:bg-orange-600 transition-colors">Отправить заявку</button>
+                    </form>
+                    <div id="mainFormSuccess" class="hidden text-center py-10">
+                        <div class="text-green-500 text-xl font-bold">Спасибо! Заявка отправлена.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-12 border-t border-white/10">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm">© 2024-2026 ООО «Центр Энергоэффективности».</p>
+        </div>
+    </footer>
+
+    <div id="calculator-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeCalculator()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl animate-fade-in">
+                <div class="bg-slate-900 p-6 text-white flex justify-between items-center shrink-0">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="calculator" class="w-6 h-6 text-orange-500"></i>
+                        <h2 class="font-bold text-xl">Калькулятор</h2>
+                    </div>
+                    <button onclick="closeCalculator()"><i data-lucide="x" class="w-6 h-6"></i></button>
+                </div>
+                
+                <div class="p-6 overflow-y-auto" id="calc-content">
+                    <div id="calc-step-1">
+                        <h3 class="font-bold text-lg mb-4">Выберите услугу:</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="selectService('lab')" class="p-4 border-2 border-slate-200 rounded-xl hover:border-orange-500 text-left transition-all">
+                                <div class="font-bold">Электролаборатория</div>
+                                <div class="text-xs text-slate-500">Испытания и измерения</div>
+                            </button>
+                            <button onclick="selectService('mount')" class="p-4 border-2 border-slate-200 rounded-xl hover:border-blue-500 text-left transition-all">
+                                <div class="font-bold">Монтаж</div>
+                                <div class="text-xs text-slate-500">Строительство ЛЭП и ПС</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="calc-step-2" class="hidden">
+                        <h3 class="font-bold text-lg mb-4">Параметры объекта:</h3>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2">Объем работ (усл. ед): <span id="range-val" class="text-orange-500 font-bold">5</span></label>
+                            <input type="range" min="1" max="50" value="5" oninput="document.getElementById('range-val').innerText = this.value; calculateTotal(this.value)">
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-xl text-center">
+                            <div class="text-sm text-slate-500">Предварительная стоимость:</div>
+                            <div class="text-3xl font-bold text-orange-600" id="calc-price">0 ₽</div>
+                        </div>
+                        <div class="mt-6 flex gap-3">
+                            <button onclick="resetCalc()" class="flex-1 py-3 border border-slate-300 rounded-lg">Назад</button>
+                            <button onclick="document.getElementById('contacts').scrollIntoView(); closeCalculator()" class="flex-1 py-3 bg-orange-500 text-white rounded-lg font-bold">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Инициализация иконок
+        lucide.createIcons();
+
+        // --- ЛОГИКА ФОРМ ---
+        function handleHeroSubmit(e) {
+            e.preventDefault();
+            alert("Заявка принята! Мы свяжемся с вами.");
+            e.target.reset();
+        }
+
+        function handleMainSubmit(e) {
+            e.preventDefault();
+            document.getElementById('mainForm').classList.add('hidden');
+            document.getElementById('mainFormSuccess').classList.remove('hidden');
+        }
+
+        // --- ЛОГИКА ЛИЦЕНЗИЙ ---
+        function filterLicenses(category) {
+            const cards = document.querySelectorAll('.license-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // --- ЛОГИКА ОТЗЫВОВ ---
+        const reviews = [
+            { name: "Алексей Петров", text: "Сотрудничаем третий год. Качество работ отличное.", company: "Завод Металлоконструкций" },
+            { name: "Марина Сидорова", text: "Все этапы выполнены точно по графику.", company: "УК НовоСтрой" },
+            { name: "Виктор Козлов", text: "Специалисты приехали вовремя, протоколы оформили грамотно.", company: "Агрохолдинг Восток" }
+        ];
+        let currentReview = 0;
+
+        function renderReview() {
+            const container = document.getElementById('review-container');
+            const r = reviews[currentReview];
+            container.innerHTML = `
+                <div class="text-orange-500 text-4xl mb-4">“</div>
+                <p class="text-xl text-slate-300 italic mb-6">${r.text}</p>
+                <div class="font-bold text-white">${r.name}</div>
+                <div class="text-orange-500 text-sm">${r.company}</div>
+            `;
+        }
+        function nextReview() {
+            currentReview = (currentReview + 1) % reviews.length;
+            renderReview();
+        }
+        function prevReview() {
+            currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+            renderReview();
+        }
+        renderReview(); // Запуск первого отзыва
+
+        // --- ЛОГИКА КАЛЬКУЛЯТОРА ---
+        let basePrice = 0;
+
+        function openCalculator() {
+            document.getElementById('calculator-modal').classList.remove('hidden');
+        }
+        function closeCalculator() {
+            document.getElementById('calculator-modal').classList.add('hidden');
+            resetCalc();
+        }
+        function selectService(type) {
+            document.getElementById('calc-step-1').classList.add('hidden');
+            document.getElementById('calc-step-2').classList.remove('hidden');
+            if(type === 'lab') basePrice = 15000;
+            if(type === 'mount') basePrice = 50000;
+            calculateTotal(5); // считаем для дефолтного значения 5
+        }
+        function calculateTotal(val) {
+            const total = basePrice + (val * 5000);
+            document.getElementById('calc-price').innerText = new Intl.NumberFormat('ru-RU').format(total) + " ₽";
+        }
+        function resetCalc() {
+            document.getElementById('calc-step-1').classList.remove('hidden');
+            document.getElementById('calc-step-2').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
